@@ -16,8 +16,8 @@ const items = [
 export default function Sidebar({ active = 'ventas', onSelect = () => {} }) {
   return (
     <aside
-      className="h-screen w-72 flex flex-col text-white shadow-2xl"
-      style={{ backgroundColor: 'var(--color-dark-deep)', fontFamily: 'var(--font-sans)' }}
+      className="h-screen w-72 flex flex-col text-white shadow-2xl border-r-4 border-[var(--color-secondary)]"
+      style={{ backgroundColor: '#011f2b', fontFamily: 'var(--font-sans)' }}
       aria-label="Sidebar de navegación"
     >
       <div className="px-5 py-6 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
