@@ -1,4 +1,4 @@
-import Sidebar from '../../../shared/Sidebar2'
+import Sidebar from '../../../shared/Sidebar'
 
 export default function dashboard() {
   return (
