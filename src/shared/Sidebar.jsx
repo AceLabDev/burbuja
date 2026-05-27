@@ -1,5 +1,5 @@
 import {
-  ChartColumnIncreasing,
+  Bubbles,
   LogOut,
   Package,
   Settings2,
@@ -23,7 +23,7 @@ export default function Sidebar({ active = 'ventas', onSelect = () => {} }) {
       <div className="px-5 py-6 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
         <div className="flex items-center gap-3">
           <div className="grid h-11 w-11 place-items-center rounded-xl" style={{ backgroundColor: 'var(--color-primary)' }}>
-            <ChartColumnIncreasing className="h-5 w-5 text-white" />
+            <Bubbles className="h-5 w-5 text-white" />
           </div>
           <div>
             <h2 className="text-lg font-semibold leading-tight">Novaxclean</h2>

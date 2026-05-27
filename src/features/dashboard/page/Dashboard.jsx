@@ -8,6 +8,7 @@ export default function Dashboard() {
   const [active, setActive] = useState('ventas')
 
   return (
+<<<<<<< Updated upstream
     <div className="flex min-h-screen bg-[var(--color-dark-deep)]">
       <Sidebar
         active={active}
@@ -52,5 +53,12 @@ export default function Dashboard() {
         </div>
       </main>
     </div>
+=======
+    </Card>
+    <Sidebar
+      active={active}
+      onSelect={setActive}
+    />
+>>>>>>> Stashed changes
   )
 }
