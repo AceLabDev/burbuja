@@ -1,93 +1,68 @@
+import {
+  ChartColumnIncreasing,
+  LogOut,
+  Package,
+  Settings2,
+  ShoppingCart,
+} from 'lucide-react'
+
 const items = [
-  {
-    key: 'ventas',
-    label: 'Ventas',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M3 3v18h18" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M7 13l3-3 5 5 4-6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    key: 'inventario',
-    label: 'Inventario',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <rect x="3" y="7" width="18" height="13" rx="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M16 3v4" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M8 3v4" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    key: 'zonas-mas',
-    label: 'Zonas más vendidas',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M3 17l6-6 4 4 8-8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    key: 'zonas-menos',
-    label: 'Zonas menos vendidas',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M21 7l-6 6-4-4L3 19" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    key: 'ajustes',
-    label: 'Ajustes',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06A2 2 0 1 1 2.3 17.88l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.68 0 1.28-.39 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06A2 2 0 1 1 6.12 2.3l.06.06c.46.46 1.21.52 1.82.33.61-.19 1-1 1-1.51V2a2 2 0 1 1 4 0v.09c0 .5.39 1.28 1 1.51.61.19 1.36.13 1.82-.33l.06-.06A2 2 0 1 1 21.7 6.12l-.06.06c-.46.46-.52 1.21-.33 1.82.19.61 1 1 1.51 1H21a2 2 0 1 1 0 4h-.09c-.5 0-1.28.39-1.51 1z" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
+  { key: 'ventas', label: 'Ventas', icon: ShoppingCart },
+  { key: 'inventario', label: 'Inventario', icon: Package },
+  { key: 'ajustes', label: 'Ajustes', icon: Settings2 },
+  { key: 'cerrar-sesion', label: 'Cerrar sesión', icon: LogOut },
 ]
 
 export default function Sidebar({ active = 'ventas', onSelect = () => {} }) {
   return (
     <aside
-      className="h-screen w-64 flex flex-col text-white"
+      className="h-screen w-72 flex flex-col text-white shadow-2xl"
       style={{ backgroundColor: 'var(--color-dark-deep)', fontFamily: 'var(--font-sans)' }}
       aria-label="Sidebar de navegación"
     >
-      <div className="px-4 py-5 border-b" style={{ borderColor: 'rgba(255,255,255,0.04)' }}>
-        <h2 className="text-lg font-semibold">Administrador</h2>
-        <p className="text-sm text-[rgba(255,255,255,0.7)]">Panel de control</p>
+      <div className="px-5 py-6 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
+        <div className="flex items-center gap-3">
+          <div className="grid h-11 w-11 place-items-center rounded-xl" style={{ backgroundColor: 'var(--color-primary)' }}>
+            <ChartColumnIncreasing className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <h2 className="text-lg font-semibold leading-tight">Novaxclean</h2>
+            <p className="text-sm text-[rgba(255,255,255,0.7)]">Panel de control</p>
+          </div>
+        </div>
       </div>
 
-      <nav className="flex-1 overflow-auto px-2 py-4">
+      <nav className="flex-1 overflow-auto px-3 py-4">
         {items.map((item) => {
           const isActive = active === item.key
+          const Icon = item.icon
           return (
             <button
               key={item.key}
               onClick={() => onSelect(item.key)}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded-md mb-2 text-left transition-colors duration-150 focus:outline-none`}
+              className="group relative mb-2 flex w-full items-center gap-3 overflow-hidden rounded-xl px-3 py-3 text-left transition-all duration-200 focus:outline-none"
               style={{
-                backgroundColor: isActive ? 'var(--color-primary)' : 'transparent',
+                backgroundColor: isActive ? 'rgba(0, 144, 193, 0.18)' : 'transparent',
                 color: isActive ? '#fff' : 'var(--color-secondary)',
+                boxShadow: isActive ? 'inset 0 0 0 1px rgba(255,255,255,0.06)' : 'none',
               }}
               aria-current={isActive ? 'page' : undefined}
             >
-              <span className="flex-none text-[18px]" style={{ color: isActive ? '#fff' : 'var(--color-secondary)' }}>
-                {item.icon}
+              <span
+                className={`absolute left-0 top-2 bottom-2 w-1 origin-center rounded-r-full bg-[var(--color-secondary)] transition-all duration-200 ${
+                  isActive ? 'scale-y-100 opacity-100' : 'scale-y-0 opacity-0 group-hover:scale-y-100 group-hover:opacity-100'
+                }`}
+              />
+              <span className="relative z-10 flex-none text-[18px] transition-transform duration-200 group-hover:translate-x-0.5">
+                <Icon className="h-5 w-5" />
               </span>
-              <span className="flex-1 text-sm">{item.label}</span>
+              <span className="relative z-10 flex-1 text-sm font-medium">{item.label}</span>
             </button>
           )
         })}
       </nav>
 
-      <div className="px-4 py-3 border-t text-xs" style={{ borderColor: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.7)' }}>
-        <div className="mb-1">Versión 1.0</div>
-        <div style={{ color: 'var(--color-accent)' }}>Soporte · ayuda@empresa.example</div>
+      <div className="px-5 py-4 border-t text-xs" style={{ borderColor: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.7)' }}>
       </div>
     </aside>
   )
