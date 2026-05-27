@@ -1,7 +1,13 @@
+import { useState } from 'react'
 import Sidebar from '../../../shared/Sidebar'
 
-export default function dashboard() {
+export default function Dashboard() {
+  const [active, setActive] = useState('ventas')
+
   return (
-    <Sidebar/>
+    <Sidebar
+      active={active}
+      onSelect={setActive}
+    />
   )
 }
